@@ -1,5 +1,6 @@
 import "../App.css";
 import { useEffect, useState } from "react";
+import Bucket from "../components/Bucket";
 
 function BucketsForm() {
   const [bucketValues, setBucketValues] = useState({
@@ -34,7 +35,7 @@ function BucketsForm() {
     <div className="flex w-3/5 h-4/5 rounded-lg z-10">
       <div className="w-1/2 bg-blue-600 rounded-l-lg">
         <span>The bucket problem equals {optimalSteps}</span>
-        <span>The bucket problem</span>
+        <Bucket params="1"></Bucket>
       </div>
       <div className="w-1/2 bg-white rounded-r-lg flex flex-col items-center justify-center">
         <span className="text-4xl">Hello!</span>
