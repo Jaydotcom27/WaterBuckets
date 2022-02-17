@@ -1,58 +1,106 @@
+// import { gcd } from "../resources/gcdCalc";
 
-import { gcd } from '../resources/gcdCalc'
+// export function getHappyPath(x, y, z) {
+//   if (x > y) {
+//     var t = x;
+//     x = y;
+//     y = t;
+//   }
 
-   export function getHappyPath(x , y , z) {
+//   //   if (z > y) return -1;
 
-       if (x > y) {
-           var t = x;
-           x = y;
-           y = t;
-       }
+//   if (z % gcd(y, x) != 0) return -1;
 
-       if (z > y)
-           return -1;
+//   var history1 = pour(y, x, z, "y", "x");
+//   var history2 = pour(x, y, z, "x", "y");
+//   if (history1.length > history2.length) {
+//     return history2;
+//   }
+//   return history1;
+// }
 
-       if ((z % gcd(y, x)) != 0)
-           return -1;
+// export function pour(fromCap, toCap, z, fromVar, toVar) {
+//   var steps = [];
+//   var from = fromCap;
+//   var to = 0;
 
-       var history1 = pour(y, x, z, "y", "x");
-       var history2 = pour(x, y, z, "x", "y");
-       if (history1.length > history2.length){
-           return history2
-       } return history1
-   }
+//   steps.push(`Filled bucket ${fromVar}`);
 
-    export function pour(fromCap , toCap , z, fromVar, toVar)
-    {
-        var steps = [];
-        var from = fromCap;
-        var to = 0;
- 
-        steps.push(`Filled bucket ${fromVar}`)
- 
-        while (from != z && to != z) {
- 
-            var temp = Math.min(from, toCap - to);
- 
-            to += temp;
-            from -= temp;
- 
-            steps.push(`Transfered water from ${fromVar} to ${toVar}`)
+//   while (from !== z && to !== z) {
+//     var temp = Math.min(from, toCap - to);
 
-            if (from == z || to == z)
-                break;
- 
-            if (from == 0) {
-                from = fromCap;
-                steps.push(`Filled bucket ${fromVar}`)
+//     to += temp;
+//     from -= temp;
 
-            }
- 
-            if (to == toCap) {
-                to = 0;
-                steps.push(`Emptyed bucket ${toVar}`)
+//     steps.push(`Transfered water from ${fromVar} to ${toVar}`);
 
-            }
-        }
-        return steps;
+//     if (from === z || to === z) break;
+
+//     if (from === 0) {
+//       from = fromCap;
+//       steps.push(`Filled bucket ${fromVar}`);
+//     }
+
+//     if (to === toCap) {
+//       to = 0;
+//       steps.push(`Emptyed bucket ${toVar}`);
+//     }
+//   }
+//   return steps;
+// }
+
+import { gcd } from "../resources/gcdCalc";
+
+export function getHappyPath(x, y, z) {
+  if (x > y) {
+    var t = x;
+    x = y;
+    y = t;
+  }
+
+  //   if (z > y) return -1;
+
+  if (z % gcd(y, x) != 0) return -1;
+
+  var history1 = pour(y, x, z, "y", "x");
+  var history2 = pour(x, y, z, "x", "y");
+  if (history1.length > history2.length) {
+    return history2;
+  }
+  return history1;
+}
+
+export function pour(fromCap, toCap, z, fromVar, toVar) {
+  var steps = [];
+  var from = fromCap;
+  var to = 0;
+
+  steps.push({ Step: steps.length + 1, Action: "Fill", Bucket1: fromVar });
+
+  while (from != z && to != z) {
+    var temp = Math.min(from, toCap - to);
+
+    to += temp;
+    from -= temp;
+
+    steps.push({
+      Step: steps.length + 1,
+      Action: "Transfer",
+      Bucket1: fromVar,
+      Bucket2: toVar,
+    });
+
+    if (from == z || to == z) break;
+
+    if (from == 0) {
+      from = fromCap;
+      steps.push({ Step: steps.length + 1, Action: "Fill", Bucket1: fromVar });
     }
+
+    if (to == toCap) {
+      to = 0;
+      steps.push({ Step: steps.length + 1, Action: "Dump", Bucket1: toVar });
+    }
+  }
+  return steps;
+}
