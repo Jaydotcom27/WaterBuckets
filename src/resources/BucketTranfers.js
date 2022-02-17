@@ -52,14 +52,13 @@
 import { gcd } from "../resources/gcdCalc";
 
 export function getHappyPath(x, y, z) {
-
   if (x > y) {
     var t = x;
     x = y;
     y = t;
   }
 
-    // if (z > y) return ["Error Z > Y"];
+    if (z > y) return ["Error Z >"];
 
   if (z % gcd(y, x) != 0) return ["Error GCD"];
 
