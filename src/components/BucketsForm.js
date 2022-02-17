@@ -24,12 +24,15 @@ function BucketsForm() {
       [e.target.name]: e.target.value,
     });
   };
+  
 
   const calculateOptimalSteps = function () {
     setTriggerAnim(true);
     setTimeout(() => setTriggerAnim(false), 2650);
     const { XValue, YValue, ZValue } = bucketValues;
     setOptimalSteps(getHappyPath(XValue, YValue, ZValue));
+
+    console.log(optimalSteps)
   };
 
   //   useEffect(() => {
@@ -49,10 +52,11 @@ function BucketsForm() {
             style={{
               speed: 1,
               height: "100%",
+              width: "100%"
             }}
           />
         ) : null}
-        {optimalSteps.length !== 0 && !triggerAnim ? (
+        {optimalSteps.length !== 0 && !triggerAnim && optimalSteps[0] !== "Error" ? (
           <div className="w-full">
             {optimalSteps.map((step) => (
               <div className="w-full px-8 py-4">
@@ -80,6 +84,7 @@ function BucketsForm() {
                     speed={1}
                     style={{
                       speed: 1,
+                      height: "100%"
                     }}
                   />
                 </div>
@@ -117,7 +122,7 @@ function BucketsForm() {
                     </div>
                     <span className="text-left text-white text-xs mb-2">
                       Keep in mind that in order to get a succesful result, the
-                      thorem indicates that the
+                      theorem indicates that the{" "}
                       <span className="font-bold">
                         Greatest Common Divisor
                       </span>{" "}

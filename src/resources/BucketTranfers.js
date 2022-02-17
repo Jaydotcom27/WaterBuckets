@@ -52,15 +52,16 @@
 import { gcd } from "../resources/gcdCalc";
 
 export function getHappyPath(x, y, z) {
+
   if (x > y) {
     var t = x;
     x = y;
     y = t;
   }
 
-  //   if (z > y) return -1;
+    // if (z > y) return ["Error Z > Y"];
 
-  if (z % gcd(y, x) != 0) return -1;
+  if (z % gcd(y, x) != 0) return ["Error GCD"];
 
   var history1 = pour(y, x, z, "y", "x");
   var history2 = pour(x, y, z, "x", "y");
