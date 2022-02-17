@@ -1,6 +1,7 @@
 import "../App.css";
 import { useEffect, useState } from "react";
-import Bucket from "../components/Bucket";
+import { getHappyPath } from "../resources/BucketTranfers.js"
+// import Bucket from "../components/Bucket";
 
 function BucketsForm() {
   const [bucketValues, setBucketValues] = useState({
@@ -9,15 +10,7 @@ function BucketsForm() {
     ZValue: 0,
   });
 
-  const [optimalSteps, setOptimalSteps] = useState(undefined);
-
-  useEffect(() => {
-    setOptimalSteps(
-      parseInt(bucketValues.XValue) +
-        parseInt(bucketValues.YValue) +
-        parseInt(bucketValues.ZValue)
-    );
-  }, [bucketValues]);
+  const [optimalSteps, setOptimalSteps] = useState([]);
 
   const handleInput = function (e) {
     setBucketValues({
@@ -28,14 +21,17 @@ function BucketsForm() {
 
   const sum = function () {
     const { XValue, YValue, ZValue } = bucketValues;
-    setOptimalSteps(Number(XValue) + Number(YValue) + Number(ZValue));
+    setOptimalSteps(
+      getHappyPath(XValue, YValue, ZValue),
+      console.log(optimalSteps),
+    );
   };
 
   return (
     <div className="flex w-3/5 h-4/5 rounded-lg z-10">
       <div className="w-1/2 bg-blue-600 rounded-l-lg">
         <span>The bucket problem equals {optimalSteps}</span>
-        <Bucket params="1"></Bucket>
+        {/* <Bucket params="1"></Bucket> */}
       </div>
       <div className="w-1/2 bg-white rounded-r-lg flex flex-col items-center justify-center">
         <span className="text-4xl">Hello!</span>
@@ -64,12 +60,12 @@ function BucketsForm() {
             type="number"
             name="ZValue"
           ></input>
-          <button
+          <div
             className="bg-blue-600 p-1.5 text-white rounded-md"
             onClick={sum}
           >
             Calculate
-          </button>
+          </div>
         </form>
       </div>
     </div>
