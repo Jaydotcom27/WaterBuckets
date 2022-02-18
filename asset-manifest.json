@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/WaterBuckets/static/css/main.edfa2421.css",
+    "main.js": "/WaterBuckets/static/js/main.726f63d9.js",
+    "static/js/787.9fde416d.chunk.js": "/WaterBuckets/static/js/787.9fde416d.chunk.js",
+    "index.html": "/WaterBuckets/index.html",
+    "main.edfa2421.css.map": "/WaterBuckets/static/css/main.edfa2421.css.map",
+    "main.726f63d9.js.map": "/WaterBuckets/static/js/main.726f63d9.js.map",
+    "787.9fde416d.chunk.js.map": "/WaterBuckets/static/js/787.9fde416d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.edfa2421.css",
+    "static/js/main.726f63d9.js"
+  ]
+}
