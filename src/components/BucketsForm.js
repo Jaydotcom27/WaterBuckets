@@ -38,6 +38,7 @@ function BucketsForm() {
   };
 
     useEffect(() => {
+      console.log(optimalSteps)
       if (optimalSteps[0] === "Error"){
         setAnimStatus(false) 
       }else{
@@ -180,9 +181,14 @@ function BucketsForm() {
               <span className=" text-sm text-gray-400 font-normal">Z Capacity</span>
             </div>
           </div>
-          {optimalSteps[0] === "Error" ? (
-            <span className="my-2 text-red-500 font-medium text-sm">Detected Error: <span className="font-bold">{optimalSteps[1]}</span></span>
-          ) : null}
+          {optimalSteps[0] === "Error"  ? (
+            <span className="my-2 text-red-500 font-medium text-sm">No solution: <span className="font-bold">{optimalSteps[1]}</span></span>
+              ) : null  
+          }
+          {optimalSteps.length !== 0 && optimalSteps[0] !== "Error"  ? (
+            <span className="my-2 text-green-600 font-medium text-sm">The optimal amount of steps is: <span className="font-bold">{optimalSteps.length}</span></span>
+            ) : null  
+          }
           <div
             className="transition ease-in-out bg-blue-600 hover:-translate-y-1 hover:scale-105 hover:bg-blue-200 hover:cursor-pointer duration-300 p-2 text-white rounded-md flex justify-center text-xl mt-10"
             onClick={calculateOptimalSteps}
