@@ -50,17 +50,40 @@
 // }
 
 import { gcd } from "../resources/gcdCalc";
+import { greaterThan } from "./MathHelpers";
+
+// export function getHappyPath(x, y, z) {
+//   if (x > y) {
+//     var t = x;
+//     x = y;
+//     y = t;
+//   }
+
+//     if (z > y) return ["Error Z >"];
+
+//   if (z % gcd(y, x) != 0) return ["Error GCD"];
+
+//   var history1 = pour(y, x, z, "y", "x");
+//   var history2 = pour(x, y, z, "x", "y");
+//   if (history1.length > history2.length) {
+//     return history2;
+//   }
+//   return history1;
+// }
 
 export function getHappyPath(x, y, z) {
-  if (x > y) {
+  if (greaterThan(x,y)) {
     var t = x;
     x = y;
     y = t;
   }
 
-    if (z > y) return ["Error Z >"];
+  if (greaterThan(z,y)) return ["Error", "Z (goal) can't be greater than Y or X, not possible to measure"];
+  
+  if (x == 0 || y == 0 || z == 0) return ["Error", "Lookout for 0 values"];
+  
+  if (z % gcd(y, x) != 0) return ["Error", "The Greatest Common Divisor of X and Y doesn't divide Z"];
 
-  if (z % gcd(y, x) != 0) return ["Error GCD"];
 
   var history1 = pour(y, x, z, "y", "x");
   var history2 = pour(x, y, z, "x", "y");
@@ -75,7 +98,7 @@ export function pour(fromCap, toCap, z, fromVar, toVar) {
   var from = fromCap;
   var to = 0;
 
-  steps.push({ Step: steps.length + 1, Action: "Fill", Bucket1: fromVar });
+  steps.push({ Step: steps.length, Action: "Fill", Bucket1: fromVar });
 
   while (from != z && to != z) {
     var temp = Math.min(from, toCap - to);
@@ -84,7 +107,7 @@ export function pour(fromCap, toCap, z, fromVar, toVar) {
     from -= temp;
 
     steps.push({
-      Step: steps.length + 1,
+      Step: steps.length,
       Action: "Transfer",
       Bucket1: fromVar,
       Bucket2: toVar,
@@ -94,12 +117,12 @@ export function pour(fromCap, toCap, z, fromVar, toVar) {
 
     if (from == 0) {
       from = fromCap;
-      steps.push({ Step: steps.length + 1, Action: "Fill", Bucket1: fromVar });
+      steps.push({ Step: steps.length, Action: "Fill", Bucket1: fromVar });
     }
 
     if (to == toCap) {
       to = 0;
-      steps.push({ Step: steps.length + 1, Action: "Dump", Bucket1: toVar });
+      steps.push({ Step: steps.length, Action: "Dump", Bucket1: toVar });
     }
   }
   return steps;

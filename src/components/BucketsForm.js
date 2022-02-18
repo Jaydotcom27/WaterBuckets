@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { getHappyPath } from "../resources/BucketTranfers.js";
 import BucketPair from "../components/BucketPair";
 import Lottie from "react-lottie-player";
-import Check from "../resources/Check.json";
+import CheckAnim from "../resources/CheckAnim.json";
 import Coder from "../resources/Coder.json";
+import ErrorAnim from "../resources/ErrorAnim.json";
+
 import { BsInputCursorText, BsBucket, BsTrophy } from "react-icons/bs";
 
 function BucketsForm() {
@@ -18,6 +20,8 @@ function BucketsForm() {
 
   const [triggerAnim, setTriggerAnim] = useState(false);
 
+  const [animStatus, setAnimStatus] = useState(true);
+
   const handleInput = function (e) {
     setBucketValues({
       ...bucketValues,
@@ -27,17 +31,19 @@ function BucketsForm() {
   
 
   const calculateOptimalSteps = function () {
-    setTriggerAnim(true);
-    setTimeout(() => setTriggerAnim(false), 2650);
     const { XValue, YValue, ZValue } = bucketValues;
     setOptimalSteps(getHappyPath(XValue, YValue, ZValue));
-
-    console.log(optimalSteps)
+    setTriggerAnim(true);
+    setTimeout(() => setTriggerAnim(false), 2650);
   };
 
-  //   useEffect(() => {
-  //     console.log(optimalSteps);
-  //   });
+    useEffect(() => {
+      if (optimalSteps[0] === "Error"){
+        setAnimStatus(false) 
+      }else{
+        setAnimStatus(true);
+      }
+    },[optimalSteps]);
 
   return (
     <div className="flex w-3/5 h-4/5 rounded-lg z-10">
@@ -46,7 +52,7 @@ function BucketsForm() {
           <Lottie
             rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
             loop={false}
-            animationData={Check}
+            animationData={animStatus === true ? CheckAnim : ErrorAnim}
             play
             speed={1}
             style={{
@@ -73,7 +79,7 @@ function BucketsForm() {
             ))}
           </div>
         ) : (
-          <div className="">
+          <div>
             {!triggerAnim ? (
               <div className="p-8 h-full">
                 <div className="bg-white w-full p-4 h-1/2 rounded-md mb-4">
@@ -162,6 +168,9 @@ function BucketsForm() {
             type="number"
             name="ZValue"
           ></input>
+          {optimalSteps[0] === "Error" ? (
+            <span className="my-2 text-red-500 font-medium text-sm">Detected Error: <span className="font-bold">{optimalSteps[1]}</span></span>
+          ) : null}
           <div
             className="transition ease-in-out bg-blue-600 hover:-translate-y-1 hover:scale-105 hover:bg-blue-200 hover:cursor-pointer duration-300 p-2 text-white rounded-md flex justify-center"
             onClick={calculateOptimalSteps}
