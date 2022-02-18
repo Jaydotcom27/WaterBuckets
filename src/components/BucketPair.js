@@ -1,9 +1,9 @@
 import "../App.css";
 import Lottie from "react-lottie-player";
-import BucketFull from "../resources/BucketFull.json";
-import BucketEmpty from "../resources/BucketEmpty.json";
-import BucketPartial from "../resources/BucketPartial.json";
-import LakeAnim from "../resources/LakeAnim.json";
+import BucketFull from "../resources/animation/BucketFull.json";
+import BucketEmpty from "../resources/animation/BucketEmpty.json";
+import BucketPartial from "../resources/animation/BucketPartial.json";
+import LakeAnim from "../resources/animation/LakeAnim.json";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 
 const BucketPair = ({ step, action, bucket1, bucket2, bucket1Capacity, bucket2Capacity }) => {

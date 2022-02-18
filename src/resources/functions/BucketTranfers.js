@@ -1,4 +1,4 @@
-import { gcd } from "../resources/gcdCalc";
+import { gcd } from "./gcdCalc";
 import { greaterThan } from "./MathHelpers";
 
 export function getHappyPath(x, y, z) {
@@ -13,7 +13,7 @@ export function getHappyPath(x, y, z) {
 
   if (greaterThan(z,y)) return ["Error", "Z (goal) can't be greater than Y and X, not possible to measure"];
   
-  if (x == 0 || y == 0 || z == 0) return ["Error", "Lookout for 0 values"];
+  if (x == 0 || y == 0 || z == 0) return ["Error", "Lookout for 0 values or symbols"];
 
   if (x < 0 || y < 0 || z < 0) return ["Error", "Lookout for negative values"];
   
