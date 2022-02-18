@@ -67,7 +67,7 @@ function BucketsForm() {
             {optimalSteps.map((step) => (
               <div className="w-full px-8 py-4">
                 <span className="text-sm font-bold text-white ">
-                  Step {step.Step}
+                  Step {step.Step + 1}
                 </span>
                 <BucketPair
                   key={step.Step}

@@ -22,7 +22,7 @@ const BucketPair = ({ step, action, bucket1, bucket2, bucket1Capacity, bucket2Ca
                 height: 60,
               }}
             />
-            <span className="text-xl font-black text-blue-600">{bucket1} = {bucket1Capacity} </span>
+            <span className="text-xl font-black text-blue-600">{bucket1} = { bucket1 === "y" ? bucket2Capacity : bucket1Capacity} </span>
           </div>
           <span className="flex items-center text-sm font-medium text-blue-600 ">
             {action}
@@ -54,7 +54,7 @@ const BucketPair = ({ step, action, bucket1, bucket2, bucket1Capacity, bucket2Ca
                 height: 60,
               }}
             />
-            <span className="text-xl font-black text-blue-600">{bucket1} = {bucket1Capacity}</span>
+            <span className="text-xl font-black text-blue-600">{bucket1} = { bucket1 === "y" ? bucket2Capacity : bucket1Capacity}</span>
           </div>
           <span className="flex items-center text-sm font-medium text-blue-600 ">
             {action}
@@ -71,7 +71,7 @@ const BucketPair = ({ step, action, bucket1, bucket2, bucket1Capacity, bucket2Ca
                 height: 60,
               }}
             />
-            <span className="text-xl font-black text-blue-600">{bucket2} = {bucket2Capacity}</span>
+            <span className="text-xl font-black text-blue-600">{bucket2} = { bucket2 === "x" ? bucket1Capacity : bucket2Capacity}</span>
           </div>
         </div>
       )}
