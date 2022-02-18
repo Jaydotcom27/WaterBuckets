@@ -6,7 +6,7 @@ import BucketPartial from "../resources/BucketPartial.json";
 import LakeAnim from "../resources/LakeAnim.json";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 
-const BucketPair = ({ step, action, bucket1, bucket2 }) => {
+const BucketPair = ({ step, action, bucket1, bucket2, bucket1Capacity, bucket2Capacity }) => {
   return (
     <div>
       {action === "Fill" || action === "Dump" ? (
@@ -22,7 +22,7 @@ const BucketPair = ({ step, action, bucket1, bucket2 }) => {
                 height: 60,
               }}
             />
-            <span className="text-xl font-black text-blue-600">{bucket1}</span>
+            <span className="text-xl font-black text-blue-600">{bucket1} = {bucket1Capacity} </span>
           </div>
           <span className="flex items-center text-sm font-medium text-blue-600 ">
             {action}
@@ -39,7 +39,6 @@ const BucketPair = ({ step, action, bucket1, bucket2 }) => {
                 height: 60,
               }}
             />
-            <span className="text-xl font-black text-blue-600">{bucket2}</span>
           </div>
         </div>
       ) : (
@@ -55,7 +54,7 @@ const BucketPair = ({ step, action, bucket1, bucket2 }) => {
                 height: 60,
               }}
             />
-            <span className="text-xl font-black text-blue-600">{bucket1}</span>
+            <span className="text-xl font-black text-blue-600">{bucket1} = {bucket1Capacity}</span>
           </div>
           <span className="flex items-center text-sm font-medium text-blue-600 ">
             {action}
@@ -72,7 +71,7 @@ const BucketPair = ({ step, action, bucket1, bucket2 }) => {
                 height: 60,
               }}
             />
-            <span className="text-xl font-black text-blue-600">{bucket2}</span>
+            <span className="text-xl font-black text-blue-600">{bucket2} = {bucket2Capacity}</span>
           </div>
         </div>
       )}
