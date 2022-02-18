@@ -13,11 +13,11 @@ export function getHappyPath(x, y, z) {
 
   if (greaterThan(z,y)) return ["Error", "Z (goal) can't be greater than Y and X, not possible to measure"];
   
-  if (x == 0 || y == 0 || z == 0) return ["Error", "Lookout for 0 values or symbols"];
+  if (x === 0 || y === 0 || z === 0) return ["Error", "Lookout for 0 values or symbols"];
 
   if (x < 0 || y < 0 || z < 0) return ["Error", "Lookout for negative values"];
   
-  if (z % gcd(y, x) != 0) return ["Error", "The Greatest Common Divisor of X and Y doesn't divide Z"];
+  if (z % gcd(y, x) !== 0) return ["Error", "The Greatest Common Divisor of X and Y doesn't divide Z"];
 
   var history1 = pour(y, x, z, "y", "x");
   var history2 = pour(x, y, z, "x", "y");
@@ -40,7 +40,7 @@ export function pour(fromCap, toCap, z, fromVar, toVar) {
 
   steps.push({ Step: steps.length, Action: "Fill", Bucket1: fromVar });
 
-  while (from != z && to != z) {
+  while (from !== z && to !== z) {
     var temp = Math.min(from, toCap - to);
 
     to += temp;
@@ -53,14 +53,14 @@ export function pour(fromCap, toCap, z, fromVar, toVar) {
       Bucket2: toVar,
     });
 
-    if (from == z || to == z) break;
+    if (from === z || to === z) break;
 
-    if (from == 0) {
+    if (from === 0) {
       from = fromCap;
       steps.push({ Step: steps.length, Action: "Fill", Bucket1: fromVar });
     }
 
-    if (to == toCap) {
+    if (to === toCap) {
       to = 0;
       steps.push({ Step: steps.length, Action: "Dump", Bucket1: toVar });
     }

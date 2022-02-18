@@ -6,7 +6,7 @@ import { BsInputCursorText, BsBucket, BsTrophy } from "react-icons/bs";
 const InformationalBox = () => {
   return (
     <div className="p-8 h-full">
-        <div className="bg-white w-full p-4 h-1/2 rounded-md mb-4">
+        <div className="bg-white w-full p-4 h-1/2 rounded-md mb-4 hidden xl:block">
             <Lottie
             loop
             animationData={Coder}
@@ -26,7 +26,7 @@ const InformationalBox = () => {
                 <div className="flex justify-center items-center text-blue-600 bg-white w-fit rounded-full p-2 mr-4">
                     <BsInputCursorText />
                 </div>
-                <span className="text-left text-white  text-xs my-2">
+                <span className="text-left text-white  text-md my-2">
                     This application is expecting three inputs from you;{" "}
                     <span className="font-bold">Bucket X Capacity</span>,{" "}
                     <span className="font-bold">Bucket Y Capacity</span> and{" "}
@@ -38,7 +38,7 @@ const InformationalBox = () => {
                 <div className="flex justify-center items-center text-blue-600 bg-white w-fit rounded-full p-2 mr-4">
                     <BsBucket />
                 </div>
-                <span className="text-left text-white text-xs mb-2">
+                <span className="text-left text-white text-md mb-2">
                     The Two Jugs Riddle was brought to fame by the old movie{" "}
                     <span className="font-bold">Die Hard 3</span>, and has a
                     solution based on a theorem from the subject of{" "}
@@ -50,7 +50,7 @@ const InformationalBox = () => {
                 <div className="flex justify-center items-center text-blue-600 bg-white w-fit rounded-full p-2 mr-4">
                     <BsTrophy />
                 </div>
-                <span className="text-left text-white text-xs mb-2">
+                <span className="text-left text-white text-md mb-2">
                     Keep in mind that in order to get a succesful result, the
                     theorem indicates that the{" "}
                     <span className="font-bold">

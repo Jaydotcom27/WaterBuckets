@@ -24,7 +24,7 @@ function BucketsForm() {
   const handleInput = function (e) {
     setBucketValues({
       ...bucketValues,
-      [e.target.name]: e.target.value,
+      [e.target.name]: parseInt(e.target.value),
     });
   };
   
@@ -44,7 +44,7 @@ function BucketsForm() {
     },[optimalSteps]);
 
   return (
-    <div className="flex w-3/5 h-4/5 rounded-lg z-10">
+    <div className="flex flex-col w-3/5 h-4/5 rounded-lg z-10 max-w-6xl xl:flex-row">
       <div className="w-1/2 h-full bg-blue-600 rounded-l-lg flex flex-col overflow-y-scroll items-center">
         {triggerAnim === true ? (
           <Lottie
@@ -63,18 +63,17 @@ function BucketsForm() {
         {optimalSteps.length !== 0 && !triggerAnim && optimalSteps[0] !== "Error" ? (
           <div className="w-full">
             {optimalSteps.map((step) => (
-              <div className="w-full px-8 py-4">
+              <div className="w-full px-8 py-4" key={step.Step}>
                 <span className="text-sm font-bold text-white ">
                   Step {step.Step + 1}
                 </span>
                 <BucketPair
-                  key={step.Step}
                   action={step.Action}
                   bucket1={step.Bucket1}
                   bucket2={step.Bucket2}
                   bucket1Capacity={bucketValues.XValue}
                   bucket2Capacity={bucketValues.YValue}
-                ></BucketPair>
+                />
               </div>
             ))}
           </div>
@@ -88,7 +87,7 @@ function BucketsForm() {
       </div>
       <div className="w-1/2 bg-white rounded-r-lg flex flex-col items-center justify-center">
         <div className="flex flex-col items-center">
-          <span className="text-4xl">Hello!</span>
+          <span className="text-4xl mt-2">Hello!</span>
           <span className="text-sm font-light mb-10">
             Submit your values to calculate
           </span>
@@ -98,7 +97,7 @@ function BucketsForm() {
             <div className="w-full h-full mr-3 p-1.5">
               <input
                 onChange={handleInput}
-                className="bg-slate-100 w-full h-full mr-3 p-1.5 border border-blue-600 rounded-md text-6xl text-center text-blue-600"
+                className="bg-slate-100 w-full h-full mr-3 p-1.5 border border-blue-600 rounded-md text-xl xl:text-3xl 2xl:text-6xl  text-center text-blue-600"
                 type="number"
                 name="XValue"
               ></input>
@@ -107,7 +106,7 @@ function BucketsForm() {
             <div className="w-full h-full mr-3 p-1.5">
               <input
                 onChange={handleInput}
-                className="bg-slate-100 w-full h-full mr-3 p-1.5 border border-blue-600 rounded-md text-6xl text-center text-blue-600"
+                className="bg-slate-100 w-full h-full mr-3 p-1.5 border border-blue-600 rounded-md text-xl xl:text-3xl 2xl:text-6xl  text-center text-blue-600"
                 type="number"
                 name="YValue"
               ></input>
@@ -116,7 +115,7 @@ function BucketsForm() {
             <div className="w-full h-full mr-3 p-1.5">
               <input
                 onChange={handleInput}
-                className="bg-slate-100 w-full h-full mr-3 p-1.5 border border-blue-600 rounded-md text-6xl text-center text-blue-600"
+                className="bg-slate-100 w-full h-full mr-3 p-1.5 border border-blue-600 rounded-md text-xl xl:text-3xl 2xl:text-6xl  text-center text-blue-600"
                 type="number"
                 name="ZValue"
               ></input>
