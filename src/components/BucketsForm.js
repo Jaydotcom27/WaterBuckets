@@ -44,7 +44,7 @@ function BucketsForm() {
     },[optimalSteps]);
 
   return (
-    <div className="flex flex-col w-3/5 h-4/5 rounded-lg z-10 max-w-6xl xl:flex-row">
+    <div className="flex flex-col items-center w-3/5 h-4/5 rounded-lg z-10 max-w-6xl min-w-600 xl:flex-row">
       <div className="w-1/2 h-full bg-blue-600 rounded-l-lg flex flex-col overflow-y-scroll items-center">
         {triggerAnim === true ? (
           <Lottie
@@ -85,7 +85,7 @@ function BucketsForm() {
           </div>
         )}
       </div>
-      <div className="w-1/2 bg-white rounded-r-lg flex flex-col items-center justify-center">
+      <div className="w-1/2 h-full bg-white rounded-r-lg flex flex-col items-center justify-center">
         <div className="flex flex-col items-center">
           <span className="text-4xl mt-2">Hello!</span>
           <span className="text-sm font-light mb-10">

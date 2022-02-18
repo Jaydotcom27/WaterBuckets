@@ -16,6 +16,9 @@ export function getHappyPath(x, y, z) {
   if (x === 0 || y === 0 || z === 0) return ["Error", "Lookout for 0 values or symbols"];
 
   if (x < 0 || y < 0 || z < 0) return ["Error", "Lookout for negative values"];
+
+  if (x > Number.MAX_SAFE_INTEGER || y > Number.MAX_SAFE_INTEGER || z > Number.MAX_SAFE_INTEGER) return ["Error", "You should try with smaller values"];
+
   
   if (z % gcd(y, x) !== 0) return ["Error", "The Greatest Common Divisor of X and Y doesn't divide Z"];
 
