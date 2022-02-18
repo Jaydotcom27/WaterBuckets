@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/WaterBuckets/static/css/main.edfa2421.css",
-    "main.js": "/WaterBuckets/static/js/main.726f63d9.js",
+    "main.css": "/WaterBuckets/static/css/main.bc990626.css",
+    "main.js": "/WaterBuckets/static/js/main.f29d93fd.js",
     "static/js/787.9fde416d.chunk.js": "/WaterBuckets/static/js/787.9fde416d.chunk.js",
     "index.html": "/WaterBuckets/index.html",
-    "main.edfa2421.css.map": "/WaterBuckets/static/css/main.edfa2421.css.map",
-    "main.726f63d9.js.map": "/WaterBuckets/static/js/main.726f63d9.js.map",
+    "main.bc990626.css.map": "/WaterBuckets/static/css/main.bc990626.css.map",
+    "main.f29d93fd.js.map": "/WaterBuckets/static/js/main.f29d93fd.js.map",
     "787.9fde416d.chunk.js.map": "/WaterBuckets/static/js/787.9fde416d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.edfa2421.css",
-    "static/js/main.726f63d9.js"
+    "static/css/main.bc990626.css",
+    "static/js/main.f29d93fd.js"
   ]
 }
